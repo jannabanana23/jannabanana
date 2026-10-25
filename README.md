@@ -7,9 +7,14 @@ Architecture portfolio of Janna Darlene P. Sagaysay, built with Next.js.
 ```sh
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # production build
-npm run start    # serve the production build
+npm run build    # static site in out/
 ```
+
+## Deploy
+
+Every push to `main` builds the site and publishes it to GitHub Pages at <https://jannabanana23.github.io/jannabanana/> (see `.github/workflows/deploy.yml`). Progress shows under the repo's **Actions** tab.
+
+The site is a static export, so the Pages path prefix (`/jannabanana`) is passed in at build time through `PAGES_BASE_PATH`. Local builds leave it empty and serve from `/`.
 
 ## Content
 
