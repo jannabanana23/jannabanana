@@ -1,0 +1,258 @@
+{
+  "/images/site/cover-drawing.webp": {
+    "width": 2400,
+    "height": 1041
+  },
+  "/images/site/portrait.webp": {
+    "width": 898,
+    "height": 1074
+  },
+  "/images/arts-high-school/cover.webp": {
+    "width": 601,
+    "height": 596
+  },
+  "/images/arts-high-school/street.webp": {
+    "width": 841,
+    "height": 596
+  },
+  "/images/arts-high-school/aerial.webp": {
+    "width": 1022,
+    "height": 567
+  },
+  "/images/arts-high-school/elevations.webp": {
+    "width": 2400,
+    "height": 1080
+  },
+  "/images/arts-high-school/seed.webp": {
+    "width": 407,
+    "height": 309
+  },
+  "/images/arts-high-school/zoning.webp": {
+    "width": 968,
+    "height": 1464
+  },
+  "/images/arts-high-school/circulation.webp": {
+    "width": 1123,
+    "height": 2481
+  },
+  "/images/arts-high-school/environment.webp": {
+    "width": 2336,
+    "height": 1104
+  },
+  "/images/arts-high-school/flexibility-1.webp": {
+    "width": 725,
+    "height": 496
+  },
+  "/images/arts-high-school/flexibility-2.webp": {
+    "width": 723,
+    "height": 495
+  },
+  "/images/arts-high-school/flexibility-3.webp": {
+    "width": 720,
+    "height": 493
+  },
+  "/images/arts-high-school/considerations.webp": {
+    "width": 2350,
+    "height": 385
+  },
+  "/images/arts-high-school/form-evolution.webp": {
+    "width": 2385,
+    "height": 253
+  },
+  "/images/arts-high-school/plan-ground.webp": {
+    "width": 1719,
+    "height": 1935
+  },
+  "/images/arts-high-school/plan-2nd.webp": {
+    "width": 1473,
+    "height": 1935
+  },
+  "/images/arts-high-school/plan-3rd.webp": {
+    "width": 1614,
+    "height": 1935
+  },
+  "/images/arts-high-school/plan-4th.webp": {
+    "width": 1473,
+    "height": 1935
+  },
+  "/images/arts-high-school/drawing-studio.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/workshop-studio.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/creative-writing-studio.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/wind-instruments-studio.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/percussion-studio.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/stringed-instruments-studio.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/courtyard.webp": {
+    "width": 1041,
+    "height": 713
+  },
+  "/images/arts-high-school/rooftop-garden.webp": {
+    "width": 1042,
+    "height": 714
+  },
+  "/images/arts-high-school/library.webp": {
+    "width": 1041,
+    "height": 713
+  },
+  "/images/arts-high-school/technical-room.webp": {
+    "width": 1042,
+    "height": 714
+  },
+  "/images/arts-high-school/voice-studio.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/canteen.webp": {
+    "width": 1439,
+    "height": 845
+  },
+  "/images/arts-high-school/dance-studio.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/media-studio.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/administrative-office.webp": {
+    "width": 1042,
+    "height": 714
+  },
+  "/images/arts-high-school/student-lounge.webp": {
+    "width": 1439,
+    "height": 985
+  },
+  "/images/arts-high-school/main-lobby.webp": {
+    "width": 1040,
+    "height": 687
+  },
+  "/images/arts-high-school/gym.webp": {
+    "width": 1042,
+    "height": 713
+  },
+  "/images/bungalow-house/cover.webp": {
+    "width": 1670,
+    "height": 1260
+  },
+  "/images/bungalow-house/thumb.webp": {
+    "width": 1296,
+    "height": 1260
+  },
+  "/images/bungalow-house/plan.webp": {
+    "width": 1105,
+    "height": 2208
+  },
+  "/images/bungalow-house/elevations.webp": {
+    "width": 2193,
+    "height": 2072
+  },
+  "/images/composite-building/cover.webp": {
+    "width": 1313,
+    "height": 927
+  },
+  "/images/composite-building/thumb.webp": {
+    "width": 992,
+    "height": 971
+  },
+  "/images/composite-building/elevations-front-rear.webp": {
+    "width": 2400,
+    "height": 890
+  },
+  "/images/composite-building/elevations-sides.webp": {
+    "width": 2400,
+    "height": 911
+  },
+  "/images/composite-building/plan-ground.webp": {
+    "width": 1701,
+    "height": 1886
+  },
+  "/images/composite-building/plan-2nd.webp": {
+    "width": 1736,
+    "height": 1886
+  },
+  "/images/composite-building/plan-attic.webp": {
+    "width": 1508,
+    "height": 1935
+  },
+  "/images/composite-building/plan-roof.webp": {
+    "width": 1508,
+    "height": 1935
+  },
+  "/images/zenso-hotel-resort/cover.webp": {
+    "width": 1532,
+    "height": 1080
+  },
+  "/images/zenso-hotel-resort/thumb.webp": {
+    "width": 1112,
+    "height": 1080
+  },
+  "/images/zenso-hotel-resort/site-plan.webp": {
+    "width": 1754,
+    "height": 2208
+  },
+  "/images/zenso-hotel-resort/plan-ground.webp": {
+    "width": 1719,
+    "height": 1762
+  },
+  "/images/zenso-hotel-resort/plan-2nd.webp": {
+    "width": 1677,
+    "height": 1762
+  },
+  "/images/zenso-hotel-resort/plan-3rd-4th.webp": {
+    "width": 1614,
+    "height": 1762
+  },
+  "/images/zenso-hotel-resort/elevations.webp": {
+    "width": 1719,
+    "height": 1935
+  },
+  "/images/zenso-hotel-resort/lobby-reception.webp": {
+    "width": 1336,
+    "height": 711
+  },
+  "/images/zenso-hotel-resort/lobby-lounge.webp": {
+    "width": 1340,
+    "height": 715
+  },
+  "/images/zenso-hotel-resort/restaurant-1.webp": {
+    "width": 1336,
+    "height": 711
+  },
+  "/images/zenso-hotel-resort/restaurant-2.webp": {
+    "width": 1336,
+    "height": 711
+  },
+  "/images/zenso-hotel-resort/pool.webp": {
+    "width": 1920,
+    "height": 1039
+  },
+  "/images/zenso-hotel-resort/koi-pond.webp": {
+    "width": 1920,
+    "height": 1031
+  },
+  "/images/zenso-hotel-resort/suite-bedroom.webp": {
+    "width": 1920,
+    "height": 1035
+  },
+  "/images/zenso-hotel-resort/suite-bath.webp": {
+    "width": 1920,
+    "height": 1031
+  }
+}

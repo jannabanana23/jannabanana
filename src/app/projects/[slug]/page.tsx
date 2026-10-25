@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Frame } from "@/components/Frame";
-import { getProject, projects, type Section } from "@/content/projects";
+import { ViewTransition } from "react";
+import { Drawings } from "@/components/Drawings";
+import { Gallery } from "@/components/Gallery";
+import { LayoutSwitch } from "@/components/LayoutSwitch";
+import { PlanSet } from "@/components/PlanSet";
+import { SheetNav } from "@/components/SheetNav";
+import { getProject, projects, sheetLetter, type Section } from "@/content/projects";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -19,89 +25,94 @@ export default async function ProjectPage({ params }: Params) {
   const project = getProject((await params).slug);
   if (!project) notFound();
 
-  const index = projects.indexOf(project);
-  const prev = projects[index - 1];
-  const next = projects[index + 1];
+  const next = projects[(projects.indexOf(project) + 1) % projects.length];
 
   return (
-    <main>
-      <section className="project-hero" aria-labelledby="project-title">
-        <div className="project-hero__panel">
-          <span className="project-hero__number" aria-hidden="true">{project.number}</span>
-          <div className="project-hero__meta">
-            <h1 id="project-title" className="project-hero__title">{project.title}</h1>
-            <p>{project.category}</p>
-            <p>{project.location}</p>
-            <p>{project.context}</p>
-            <p>{project.year}</p>
+    <main id="main">
+      <section className="phero" aria-labelledby="project-title">
+        <div className="phero__panel">
+          <span className="phero__number" aria-hidden="true">{project.number.padStart(2, "0")}</span>
+          <div className="phero__meta">
+            <h1 id="project-title" className="phero__title">{project.title}</h1>
+            <dl className="phero__facts">
+              <div><dt>Type</dt><dd>{project.category}</dd></div>
+              <div><dt>Location</dt><dd>{project.location}</dd></div>
+              <div><dt>Context</dt><dd>{project.context}</dd></div>
+              <div><dt>Year</dt><dd>{project.year}</dd></div>
+              <div><dt>Tools</dt><dd>{project.tools.join(", ")}</dd></div>
+            </dl>
           </div>
-          <p className="project-hero__tools">{project.tools.join(", ")}</p>
         </div>
-        <Frame
-          className="project-hero__image"
-          label={project.cover.label}
-          src={project.cover.src}
-          ratio={project.cover.ratio}
-          fill
-          caption={false}
-          priority
-          sizes="(max-width: 760px) 100vw, 60vw"
-        />
+        <ViewTransition name={`cover-${project.slug}`} share="morph" default="none">
+          <div className="phero__image">
+            <Image src={project.cover.src} alt={project.cover.alt} fill priority sizes="(max-width: 900px) 100vw, 58vw" />
+          </div>
+        </ViewTransition>
       </section>
 
-      {project.sections.map((section) => (
-        <ProjectSection key={section.title} section={section} />
-      ))}
+      <p className="phero__summary">{project.summary}</p>
 
-      <nav className="project-nav" aria-label="More projects">
-        {prev ? (
-          <Link href={`/projects/${prev.slug}`} className="project-nav__link">
-            <span className="project-nav__hint">Previous</span>
-            {prev.number} {prev.title}
-          </Link>
-        ) : <span />}
-        {next ? (
-          <Link href={`/projects/${next.slug}`} className="project-nav__link project-nav__link--next">
-            <span className="project-nav__hint">Next</span>
-            {next.number} {next.title}
-          </Link>
-        ) : (
-          <Link href="/#works" className="project-nav__link project-nav__link--next">
-            <span className="project-nav__hint">Back to</span>
-            All projects
-          </Link>
-        )}
-      </nav>
+      <div className="sheets">
+        <SheetNav items={project.sections.map(({ id, title }) => ({ id, title }))} />
+        <div className="sheets__body">
+          {project.sections.map((section, i) => (
+            <ProjectSection key={section.id} section={section} letter={sheetLetter(i)} />
+          ))}
+        </div>
+      </div>
+
+      <Link href={`/projects/${next.slug}`} className="next-project">
+        <span className="next-project__label">Next project</span>
+        <span className="next-project__title">
+          <span className="bubble" aria-hidden="true">{next.number}</span>
+          {next.title}
+        </span>
+        <ViewTransition name={`cover-${next.slug}`} share="morph" default="none">
+          <span className="next-project__image">
+            <Image src={next.thumb.src} alt="" fill sizes="(max-width: 760px) 100vw, 40vw" />
+          </span>
+        </ViewTransition>
+      </Link>
     </main>
   );
 }
 
-function ProjectSection({ section }: { section: Section }) {
+function ProjectSection({ section, letter }: { section: Section; letter: string }) {
   return (
-    <section className={`project-section project-section--${section.kind}`}>
-      <h2 className="project-section__title">{section.title}</h2>
-      {section.kind === "text" && (
-        <div className="prose">{section.body.map((p) => <p key={p}>{p}</p>)}</div>
-      )}
-      {section.kind === "list" && (
-        <ul className="considerations">{section.items.map((i) => <li key={i}>{i}</li>)}</ul>
-      )}
-      {section.kind === "gallery" && (
-        <>
-          {section.body && <div className="prose">{section.body.map((p) => <p key={p}>{p}</p>)}</div>}
-          <div className={`gallery gallery--${section.columns}`}>
-            {section.shots.map((shot) => (
-              <Frame
-                key={shot.label}
-                label={shot.label}
-                src={shot.src}
-                ratio={shot.ratio}
-                sizes={section.columns === 1 ? "100vw" : `(max-width: 760px) 100vw, ${Math.round(100 / section.columns)}vw`}
-              />
-            ))}
+    <section id={section.id} className={`sheet sheet--${section.kind}`} aria-labelledby={`${section.id}-title`}>
+      <h2 id={`${section.id}-title`} className="sheet__title">
+        <span className="bubble" aria-hidden="true">{letter}</span>
+        {section.title}
+      </h2>
+
+      {section.kind === "concept" ? (
+        <div className="concept">
+          <div className="concept__text">
+            <Image src={section.seed.src} alt={section.seed.alt} width={section.seed.width} height={section.seed.height} sizes="320px" className="concept__seed" />
+            {section.body?.map((p) => <p key={p}>{p}</p>)}
           </div>
-        </>
+          <figure className="concept__diagram">
+            <Image src={section.diagram.src} alt={section.diagram.alt} width={section.diagram.width} height={section.diagram.height} sizes="(max-width: 900px) 100vw, 35vw" />
+          </figure>
+        </div>
+      ) : (
+        section.body && (
+          <div className="prose">
+            {section.body.map((p) => <p key={p}>{p}</p>)}
+          </div>
+        )
       )}
+
+      {section.kind === "text" && section.figure && (
+        <figure className="sheet__figure">
+          <Image src={section.figure.src} alt={section.figure.alt} width={section.figure.width} height={section.figure.height} sizes="(max-width: 1000px) 100vw, 75vw" />
+          <figcaption>{section.figure.alt}</figcaption>
+        </figure>
+      )}
+      {section.kind === "plans" && <PlanSet sheets={section.sheets} />}
+      {section.kind === "drawings" && <Drawings images={section.images} />}
+      {section.kind === "gallery" && <Gallery images={section.images} />}
+      {section.kind === "switch" && <LayoutSwitch options={section.options} />}
     </section>
   );
 }

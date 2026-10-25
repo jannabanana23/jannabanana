@@ -1,19 +1,13 @@
-import Link from "next/link";
 import { profile } from "@/content/profile";
+import { projects } from "@/content/projects";
+import { SiteNav } from "./SiteNav";
 
 export function SiteHeader() {
   return (
-    <header className="site-header">
-      <Link href="/" className="site-header__name">
-        {profile.shortName}
-      </Link>
-      <nav aria-label="Main">
-        <ul className="site-header__nav">
-          <li><Link href="/#works">Works</Link></li>
-          <li><Link href="/#about">About</Link></li>
-          <li><Link href="/#contact">Contact</Link></li>
-        </ul>
-      </nav>
-    </header>
+    <SiteNav
+      name={profile.shortName}
+      initials={profile.initials}
+      projects={projects.map(({ slug, number, title }) => ({ slug, number, title }))}
+    />
   );
 }

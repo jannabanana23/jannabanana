@@ -1,6 +1,6 @@
 # jannabanana
 
-Portfolio site for Janna Darlene P. Sagaysay, built with Next.js.
+Architecture portfolio of Janna Darlene P. Sagaysay, built with Next.js.
 
 ## Run it
 
@@ -8,21 +8,22 @@ Portfolio site for Janna Darlene P. Sagaysay, built with Next.js.
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # production build
+npm run start    # serve the production build
 ```
 
-## Editing content
+## Content
 
-All text lives in two files:
+- `src/content/profile.ts`: name, about, education, experience, skills, contact
+- `src/content/projects.ts`: the four projects. Each one is a list of lettered sheets (overview, plans, drawings, gallery...) shown in order on the project page.
 
-- `src/content/profile.ts`: name, about text, education, experience, skills, contact
-- `src/content/projects.ts`: the four projects, their descriptions and every image slot
+## Images
 
-## Adding images
+All images come from `PORTFOLIO.pdf` (kept out of git). To re-extract them after the PDF changes:
 
-Every image starts as a grey placeholder with an X. To replace one:
+```sh
+npm run images
+```
 
-1. Put the file in `public/images/`, e.g. `public/images/arts-high-school/front.jpg`.
-2. Set `src` on the matching item, e.g.
-   `cover: { label: "Front perspective, main entrance", src: "/images/arts-high-school/front.jpg", ratio: 4 / 3 }`.
+This needs [Poppler](https://poppler.freedesktop.org/) on your PATH (`scoop install poppler` on Windows). Renders and photos are copied out as-is; plans, elevations and diagrams are vector, so they are rendered at 300 dpi and cropped. The crop boxes and which PDF image goes where are listed at the top of `scripts/extract-images.mjs`. Output goes to `public/images/` as `.webp`, plus `src/content/images.json` with each image's size.
 
-The portrait and the cover line drawing are set with `portrait` and `coverDrawing` in `profile.ts`.
+To use a higher-resolution original instead, drop it over the matching file in `public/images/`, then update its width and height in `images.json`.
